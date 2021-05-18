@@ -45,6 +45,7 @@ const ShoeCard = ({
         <Row>
           <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
         </Row>
+        <Flag>{variant}</Flag>
       </Wrapper>
     </Link>
   );
@@ -56,6 +57,7 @@ const Link = styled.a`
 `;
 
 const Wrapper = styled.article`
+  position: relative;
 `;
 
 const ImageWrapper = styled.div`
@@ -69,6 +71,8 @@ const Image = styled.img`
 
 const Row = styled.div`
   font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Name = styled.h3`
@@ -85,6 +89,18 @@ const ColorInfo = styled.p`
 const SalePrice = styled.span`
   font-weight: ${WEIGHTS.medium};
   color: ${COLORS.primary};
+`;
+
+const Flag = styled.div`
+  position: absolute;
+  top: 12px;
+  right: -4px;
+  padding: 8px 10px;
+  font-size: 0.875rem;
+  font-weight: ${WEIGHTS.bold};
+  color: ${COLORS.white};
+  background-color: ${COLORS.secondary};;
+  border-radius: 2px;
 `;
 
 export default ShoeCard;
