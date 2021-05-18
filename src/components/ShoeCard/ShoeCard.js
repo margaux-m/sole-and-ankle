@@ -36,6 +36,8 @@ const ShoeCard = ({
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
+          {variant === 'on-sale' && <SaleFlag>Sale</SaleFlag>}
+          {variant === 'new-release' && <NewFlag>Just Released!</NewFlag>}
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
@@ -51,11 +53,10 @@ const ShoeCard = ({
         </Row>
         <Row>
           <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
-          { variant === 'on-sale' ? (
+          {variant === 'on-sale' ? (
               <SalePrice>{formatPrice(salePrice)}</SalePrice>
-            ) : undefined }
+            ) : undefined}
         </Row>
-        <Flag>{variant}</Flag>
       </Wrapper>
     </Link>
   );
@@ -66,9 +67,7 @@ const Link = styled.a`
   color: inherit;
 `;
 
-const Wrapper = styled.article`
-  position: relative;
-`;
+const Wrapper = styled.article``;
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -112,8 +111,15 @@ const Flag = styled.div`
   font-size: 0.875rem;
   font-weight: ${WEIGHTS.bold};
   color: ${COLORS.white};
-  background-color: ${COLORS.secondary};;
   border-radius: 2px;
+`;
+
+const SaleFlag = styled(Flag)`
+  background-color: ${COLORS.primary};;
+`;
+
+const NewFlag = styled(Flag)`
+  background-color: ${COLORS.secondary};;
 `;
 
 export default ShoeCard;
